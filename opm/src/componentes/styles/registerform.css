@@ -1,0 +1,49 @@
+.registerform{
+    
+    margin: 100px;
+    padding: 50px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: rgb(103, 32, 117);
+    text-align: center;
+    border-radius: 20px;
+    justify-content: center;
+}
+input{
+    border-radius: 30px;
+    height: 30px;
+    
+   
+}
+h1{
+text-align: center;
+color: black;
+font-family: 'Times New Roman', Times, serif;
+
+}
+fondo{
+    background: black;
+}
+.letra{
+    color: rgba(112, 34, 112, 0.836);
+    font-size: 80px;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+.fondonav{
+    
+    width: 80%;
+    background: rgb(139, 139, 225);
+    
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    border-radius: 30px;
+     height: 30px;
+}

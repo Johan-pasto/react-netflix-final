@@ -1,0 +1,33 @@
+/* src/styles/nav.css */
+.aling {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  position: sticky; /* Se queda arriba al hacer scroll */
+  top: 0;
+  z-index: 1000;
+}
+
+.text {
+  color: #b86bff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.text:hover {
+  color: #00bcd4;
+}
+
+/* Elimina subrayado en los <Link> */
+.aling a {
+  text-decoration: none;
+}
