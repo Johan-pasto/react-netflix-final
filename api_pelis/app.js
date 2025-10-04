@@ -1,6 +1,5 @@
-// ======================
 //  IMPORTS
-// ======================
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -11,19 +10,19 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// ======================
+
 //  CONEXIÓN A MONGO
-// ======================
+
 mongoose.connect('mongodb+srv://JohanPasto:Johan2006@cluster0.u59wgwp.mongodb.net/basepeli', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log("✅ Conectado a MongoDB"))
-.catch(err => console.error("❌ Error al conectar a Mongo:", err))
+.then(() => console.log(" Conectado"))
+.catch(err => console.error("Error al conectar:", err))
 
-// ======================
+
 //  MODELOS
-// ======================
+
 const PeliculaSchema = new mongoose.Schema({
   titulo: { type: String, required: true },
   imagen: { type: String, required: true }
@@ -39,9 +38,9 @@ const UsuarioSchema = new mongoose.Schema({
 const Pelicula = mongoose.model("Pelicula", PeliculaSchema)
 const Usuario = mongoose.model("Usuario", UsuarioSchema)
 
-// ======================
+
 //  RUTAS USUARIOS
-// ======================
+
 
 // Registro
 app.post('/crear', async (req,res)=>{
@@ -56,13 +55,13 @@ app.post('/crear', async (req,res)=>{
     await nuevoUsuario.save()
     return res.status(201).json({
       success: true,
-      message: '✅ Usuario creado con éxito'
+      message: ' Usuario creado con éxito'
     })
   } catch (err) {
     console.error(err)
     return res.status(400).json({
       success: false,
-      message: '❌ Error al crear usuario',
+      message: ' Error al crear usuario',
       error: err.message
     })
   }
@@ -74,10 +73,10 @@ app.post('/login', async (req, res)=>{
   try {
     const usuario = await Usuario.findOne({ Correo, Contrasena })
     if (!usuario) {
-      return res.status(401).json({ success: false, message: '❌ Correo o contraseña incorrectos' })
+      return res.status(401).json({ success: false, message: ' Correo o contraseña incorrectos' })
     }
     return res.json({
-      mensaje: '✅ Inicio de sesión exitoso',
+      mensaje: ' Inicio de sesión exitoso',
       usuario: {
         id: usuario._id,
         nombre: usuario.Nombre,
@@ -86,13 +85,13 @@ app.post('/login', async (req, res)=>{
     })
   } catch (err) {
     console.error(err)
-    return res.status(500).json('❌ Error al iniciar sesión')
+    return res.status(500).json(' Error al iniciar sesión')
   }
 })
 
-// ======================
+
 //  RUTAS PELICULAS
-// ======================
+
 app.get('/peliculas', async (req, res) => {
   try {
     const pelis = await Pelicula.find()
@@ -108,16 +107,15 @@ app.post('/peliculas', async (req, res) => {
   try {
     const nueva = new Pelicula({ titulo, imagen })
     await nueva.save()
-    res.status(201).json({ success: true, message: "✅ Película agregada con éxito" })
+    res.status(201).json({ success: true, message: "Película agregada con éxito" })
   } catch (err) {
     console.error(err)
-    res.status(500).json({ success: false, message: "❌ Error al agregar película" })
+    res.status(500).json({ success: false, message: " Error al agregar película" })
   }
 })
 
-// ======================
-//  SERVER
-// ======================
+
+
 app.listen(8000, () => {
-  console.log("🚀 API corriendo en http://localhost:8000")
+  console.log(" API corriendo en http://localhost:8000")
 })
